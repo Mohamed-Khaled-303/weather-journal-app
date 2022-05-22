@@ -22,14 +22,13 @@ app.use(express.static('website'));
 
 
 // Setup Server
+function setupPort(port) {
+    app.listen(port, () => {
+        console.log(`server is running on: localhost:${port}`);
+    });
+}
 
-// Spin up the server
-const port = 8080;
-
-app.listen(port, () => {
-    console.log(`server is running on: localhost:${port}`);
-})
-
+setupPort(8080);
 
 // Callback function to complete GET '/all'
 app.get('/all', (req, res) => {
@@ -45,4 +44,3 @@ app.post('/add', (req, res) => {
         content: req.body.content
     }
 });
-
